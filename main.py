@@ -49,9 +49,15 @@ if uploaded_file is not None:
     image.save(image_byte_arr, format='PNG')
     image_byte_arr = image_byte_arr.getvalue()
 
-    with open('uploaded_fridge_image.png', 'wb') as f:
+    # imagesフォルダに保存（なければ作成）
+    import os
+    images_dir = os.path.join(os.getcwd(), "images")
+    if not os.path.exists(images_dir):
+        os.makedirs(images_dir)
+    image_path = os.path.join(images_dir, "upload_image.png")
+    with open(image_path, 'wb') as f:
         f.write(image_byte_arr) 
-    input_file = genai.upload_file(path=r'C:\Users\hryo-un\Desktop\web_tools\web_tools\image\upload_image.png', display_name = 'image')
+    input_file = genai.upload_file(path=image_path, display_name='image')
 
     with st.spinner('食材を認識中...'):
         ingredients = recognze_ingredients(input_file)
