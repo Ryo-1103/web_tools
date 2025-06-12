@@ -28,7 +28,7 @@ def recognze_ingredients(input_file):
 def suggest_recipe(ingredients):
     """食材からレシピを提案する関数"""
     prompt = (
-        f"以下の食材を使って、簡単で美味しい献立２食分を提案してください。\n\n"
+        f"以下の食材を使って、簡単で美味しい献立を今日の1食分だけ提案してください。\n\n"
         f"{ingredients}\n\n"
         "レシピは日本語で、２人分の材料と手順を詳しく説明してください。"
         "また各献立ごとに【買い物リスト】を必ず作成し、"
@@ -74,8 +74,16 @@ if uploaded_file is not None:
     with st.spinner('レシピを提案中...'):
         recipe = suggest_recipe(ingredients)
 
+    # 「他の献立を生成」ボタン
+    if st.button("他の献立を生成"):
+        with st.spinner('別のレシピを提案中...'):
+            recipe = suggest_recipe(ingredients)
+        if recipe:
+            st.write("こちらがレシピ提案です")
+            st.write(recipe)
+
     if recipe:
-        st.write("こちらがいくつかのレシピ提案です")
+        st.write("こちらがレシピ提案です")
         st.write(recipe)
 
         # 保存ボタンをレシピの横に表示
