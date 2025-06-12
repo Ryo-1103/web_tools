@@ -1,6 +1,5 @@
-from dotenv import load_dotenv
+import streamlit as st
 import os
 
-load_dotenv()
 
-API_KEY = os.getenv("GEMINI_API_KEY")
+API_KEY = st.secrets("GEMINI_API_KEY")
