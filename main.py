@@ -3,7 +3,9 @@ from PIL import Image
 import io
 import google.generativeai as genai
 
-genai.configure(api_key="API_KEY")  # Replace with your actual API key
+from config import config
+
+genai.configure(api_key=config.API_KEY)  # Replace with your actual API key
 model = genai.GenerativeModel(model_name="gemini-1.5-flash")
 
 st.set_page_config(page_title='今日の献立提案',  layout='wide')
@@ -49,7 +51,7 @@ if uploaded_file is not None:
 
     with open('uploaded_fridge_image.png', 'wb') as f:
         f.write(image_byte_arr) 
-    input_file = genai.upload_file(path=r'C:\Users\hryo-un\Desktop\cook\uploaded_fridge_image.png', display_name = 'image')
+    input_file = genai.upload_file(path=r'C:\Users\hryo-un\Desktop\web_tools\web_tools\image\upload_image.png', display_name = 'image')
 
     with st.spinner('食材を認識中...'):
         ingredients = recognze_ingredients(input_file)
