@@ -1,10 +1,9 @@
-# ゴミ出し管理アプリ
+# ホーム管理アプリ
 
-## 概要
-このアプリケーションは、以下の機能を提供します：
-- ゴミ出しカレンダー（曜日ごとのゴミの種類を表示）
-- 献立提案機能（冷蔵庫の中身から献立を提案）
-- 買い物リスト管理
+## 機能
+- ゴミ出しカレンダー：曜日ごとのゴミの種類を視覚的に表示
+- 献立提案：冷蔵庫の中身から最適な献立を提案
+- 買い物リスト管理：提案された献立の材料をチェックリストで管理
 
 ## 必要要件
 - Python 3.8以上
@@ -13,7 +12,7 @@
 
 ## インストール方法
 ```bash
-git clone https://github.com/yourusername/web_tools.git
+git clone https://github.com/hryo-un/web_tools.git
 cd web_tools
 pip install -r requirements.txt
 ```
@@ -22,7 +21,7 @@ pip install -r requirements.txt
 1. `.streamlit/secrets.toml`ファイルを作成
 2. 以下の内容を追加：
 ```toml
-GEMINI_API_KEY = "あなたのGemini APIキー"
+GEMINI_API_KEY = "your-api-key"
 ```
 
 ## 使用方法
